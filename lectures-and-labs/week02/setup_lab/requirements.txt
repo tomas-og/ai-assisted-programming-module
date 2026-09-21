@@ -1,0 +1,3 @@
+# Essential Python packages for AI Programming Lab
+numpy
+pandas
