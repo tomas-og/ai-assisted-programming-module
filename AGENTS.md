@@ -353,11 +353,70 @@ that matters is the fraction of DIY steps asking the student to *do or
 write something themselves* rather than copy a supplied fence. When a lab
 runs long, cut transcription before you cut exercises.
 
-**Why the deliverable differs from OOC.** OOC labs produce console output,
-so `**Expected output**` can be exact text. Many AIAP tasks produce a
-written artefact instead — a prompt, an audit, a comparison — which is why
-`**What you should have**` exists. Use whichever the exercise actually
-produces; never omit both, or the student has no way to self-check.
+**Why the self-check block differs from OOC.** OOC labs produce console
+output, so `**Expected output**` can be exact text. Many AIAP steps end in
+something on screen that is not console output — a chat answer, a diff, a
+table a shipped script printed — which is why `**What you should have**`
+exists. It describes what the student should be looking at by the end of
+the DIY, so they can tell they are on track. It is never a file to hand
+in: nothing in a lab is submitted (see below). Use whichever the exercise
+actually produces; never omit both, or the student has no way to
+self-check.
+
+### How a lab is delivered — tasks, not write-ups
+
+The setup lab (`lectures-and-labs/week02/setup_lab/`) is the worked
+example.
+
+- **Where it runs.** In the student's own private template copy, in a
+  Codespace built from the root `.devcontainer/` (Debian, Python 3.12,
+  Node 22, `gh` signed in, Copilot Chat installed), usually in the
+  browser. So a lab may assume Linux commands, network access and a
+  signed-in Copilot, and must not assume anything else about the machine.
+  In a browser the browser owns some shortcuts — `Ctrl+W`, `Ctrl+N`,
+  `Ctrl+T` and any chord ending in them — so instructions use the menus,
+  the right-click menu or the Command Palette instead. `Ctrl+Alt+I` (the
+  chat panel) and `Ctrl+I` (inline chat) are safe.
+- **Nothing is submitted and nothing is corrected.** The 4% Practical
+  Assessment on Moodle is the only assessed piece of a lab week. A lab
+  therefore never asks for a file, table or note "to hand in", and never
+  says "record", "write down" or "for submission".
+- **Tasks, not reflection.** A lab is built from tasks with visible
+  results, not from reflection tables or write-ups. Every DIY step is a
+  prompt to type, a command to run, or something to look at. No
+  reflection tables, no `REFLECTION.md`. When the point needs a
+  comparison, ship a script that makes it (the setup lab's
+  `email_check.py` runs every validator the student got against the same
+  awkward addresses and counts where they disagree) rather than asking
+  the student to compare by eye and write it down. When a lab runs
+  short, extend a task rather than adding a write-up: the same prompt
+  put to two or three other models from the model picker, framed as a
+  hunt ("which one can you catch out?"), is the cheapest extension.
+- **Surprises that teach either way.** Model behaviour moves every few
+  months, so a DIY must land whichever way the model behaves — anchor it
+  on something the student checks themselves (`hasattr`, `wc -l`,
+  running the file, a shipped harness) rather than on the model failing.
+  A lab that depends on the model failing has a shelf life.
+- **Say which chat mode, every time — and know there is no no-tools
+  mode.** In a Codespace the Copilot chat offers **Interactive** (reads
+  freely, asks before it runs a command or changes a file), **Plan**
+  (read-only) and **Autopilot** (never asks); the "Ask" role that the VS
+  Code docs describe is not offered by the Copilot harness. Every mode
+  can read the workspace, so an answer "from memory" is asked for in the
+  prompt ("without using any tools"), never selected in a picker, and the
+  step watches whether the instruction was obeyed. A step that talks to
+  the assistant names the mode and says when to start a fresh
+  conversation.
+- **The why lives in the hint, short.** Steps stay bare and imperative;
+  the mechanism behind the surprise goes in the `<details>` hint, a
+  paragraph or two, so a student who wants it has it and one who does not
+  is not made to sit through it.
+- **Sized to two hours.** Let the exercises run to about 110 minutes
+  including Codespace start-up.
+
+Labs written before this rule (prompting, agents, vibe-coding) still carry
+`REFLECTION.md` exercises; bring each into line when it is next edited,
+keeping the formula above and `check_lab_structure.py` green.
 
 ## Editing rules
 

@@ -48,7 +48,10 @@ all semester, and it is the account an employer will look at.
 2. On *your* repo: **Code → Codespaces → Create codespace**.
 3. The devcontainer gives you Python 3.12, Node 22 and the `gh` CLI. There
    is nothing to install, and the Codespace opens on this page.
-4. Open this week's folder and follow the lab's README.
+4. If VS Code asks whether you trust the authors of the files in this
+   folder, choose **Yes**: it is your own copy of the module's files, and
+   nothing in the labs can run in Restricted Mode.
+5. Open this week's folder and follow the lab's README.
 
 Don't *Fork*. A fork of a public repo can never be made private, so your
 work would be world-readable, and the fork network would publish a list of
